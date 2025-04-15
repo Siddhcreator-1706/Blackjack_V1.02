@@ -269,6 +269,14 @@ drawCardToHand(dealerHand);
 ---
 # 🃏 Blackjack Enhancement: Realistic Dealer Card Reveal
 
+## 🔍 What Changed?  
+**Before:**  
+Dealer's 2nd card was always visible (less realistic)  
+
+**After:**  
+Dealer's 2nd card stays hidden until their turn (like real casinos)  
+
+---
 ## 🎯 Feature Overview
 | Aspect          | Before Implementation | After Implementation |
 |-----------------|-----------------------|----------------------|
@@ -302,8 +310,82 @@ class GameBoard {
         // ... rest of dealer turn logic ...
     }
 };
-
 ```
+# 🃏 Blackjack Score Tracker Enhancement
+
+## 📊 Feature: Win/Loss Statistics
+**Adds persistent score tracking to your Blackjack game**
+
+## ✨ Key Benefits
+
+| Feature          | Impact                                  |
+|------------------|-----------------------------------------|
+| **Player Progress** | See your improvement over time        |
+| **Replay Value**   | Encourages "one more game" mentality  |
+| **Visual Feedback** | Clear win/loss stats on screen       |
+
+🚀 Future Upgrades
+Win Percentage Calculation
+Session Saving
+Achievement Badges
+High Score Table
+
+## 🔍 Key Display Elements
+
+- 🏆 Clear win/loss counters in a bordered box  
+- 🃏 Current game result with celebration emoji  
+- ♠️♦️ Visible dealer cards after reveal  
+- ┌─┐ Box-drawing characters for clean UI borders  
+
+## 🎮 Game Display Example
+
+### Live Game Session Preview
+
+**In-Game View:**
+```text
+┌──────────────────────────────┐
+│       BLACKJACK SCORES        │
+├──────────────┬───────────────┤
+│   WINS: 5    │   LOSSES: 3   │
+└──────────────┴───────────────┘
+┌──────────────────────────────┐
+│                              │
+│   You got Blackjack! 🎉      │
+│   Dealer shows: ♠K ♦9        │
+│                              │
+└──────────────────────────────┘
+```
+
+## 🛠 Implementation Code
+```cpp
+// In GameBoard.h
+private:
+    int wins = 0;
+    int losses = 0;
+    QGraphicsTextItem* scoreDisplay;
+
+// In GameBoard constructor
+scoreDisplay = new QGraphicsTextItem();
+scoreDisplay->setDefaultTextColor(Qt::white);
+scene->addItem(scoreDisplay);
+updateScoreDisplay();
+
+// New functions
+void GameBoard::gameOver(bool playerWon) {
+    playerWon ? wins++ : losses++;
+    updateScoreDisplay();
+    statusText->setPlainText(playerWon ? "You win! 🎉" : "Dealer wins 😢");
+}
+
+void GameBoard::updateScoreDisplay() {
+    scoreDisplay->setPlainText(
+        "Wins: " + QString::number(wins) + 
+        "  |  Losses: " + QString::number(losses)
+    );
+    scoreDisplay->setPos(300, 20);
+}
+
+
 
 Using CMake:
 ```bash
