@@ -1,4 +1,252 @@
-# Blackjack_V1.02
-Extension of my old Blackjack game with Qt for C++
+# 🃏 Blackjack_V1.02 — Qt C++ Game
 
-![image](https://user-images.githubusercontent.com/38600186/167278738-d10f1045-6737-467a-a020-c44ac6fc4991.png)
+This is a Qt-based Blackjack game built in C++. It uses object-oriented principles and graphical components from Qt (e.g., QGraphicsView, QGraphicsScene, QPushButton) to create an interactive card game GUI.
+
+---
+
+## 📂 Project Structure & File Roles
+
+| File         | Role |
+|--------------|------|
+| card.h / cpp | Defines a Card class — suit, rank, value, and GUI representation. |
+| deck.h / cpp | Manages a 52-card deck: creation, shuffling, and drawing. |
+| gameboard.h / cpp | Core gameplay logic and GUI layout: user interaction, scoring, and results. |
+| main.cpp     | Launches the application with a GameBoard view. |
+
+---
+
+## ᵐ Qt Signals and Slots: Event Flow
+
+Qt uses signals and slots to handle user interaction. When a user clicks a button, a signal is emitted. A slot is a method that's executed in response.
+
+| UI Element      | Signal         | Slot Function     | Action Performed           |
+|-----------------|----------------|-------------------|----------------------------|
+| Hit Button      | `clicked()`    | `playerHit()`     | Player draws a card        |
+| Stand Button    | `clicked()`    | `playerStand()`   | Dealer plays, then result  |
+| Restart Button  | `clicked()`    | `restartGame()`   | Resets the board and deck  |
+
+These are connected using:
+```cpp
+connect(hitButton, SIGNAL(clicked()), this, SLOT(playerHit()));
+connect(standButton, SIGNAL(clicked()), this, SLOT(playerStand()));
+connect(restartButton, SIGNAL(clicked()), this, SLOT(restartGame()));
+```
+
+---
+
+## 🧹 Class Breakdown
+
+### 🃏 Card
+
+Represents one card.
+
+| Member         | Purpose |
+|----------------|---------|
+| `QString suit` | "Hearts", "Spades", etc. |
+| `QString rank` | "A", "K", "Q", ..., "2"  |
+| `int value`    | 11 for Ace, 10 for King/Queen/Jack, others as-is |
+| `QGraphicsTextItem* text` | Graphical display on card item |
+
+Constructor:
+```cpp
+Card(QString suit, QString rank, int value);
+```
+
+Other method:
+```cpp
+int getValue() const;  // Returns value of card
+```
+
+### 🎴 Deck
+
+Creates and manages a 52-card shuffled deck.
+
+| Member                 | Purpose |
+|------------------------|---------|
+| `std::vector<Card*> cards` | Container holding all cards |
+
+Key Methods:
+- `Deck()` → Initializes all 52 cards.
+- `void shuffle()` → Shuffles the deck randomly.
+- `Card* drawCard()` → Draws one card from the deck.
+- `int cardsLeft()` → Returns remaining cards.
+
+### 🎮 GameBoard
+
+Main game view, logic, and UI.
+
+| Member                  | Purpose |
+|-------------------------|---------|
+| `QGraphicsScene* scene` | The visual canvas |
+| `Deck* deck`            | Manages card dealing |
+| `std::vector<Card*> playerHand` | Cards drawn by player |
+| `std::vector<Card*> dealerHand` | Cards drawn by dealer |
+| `QPushButton* hitButton` | Draw a new card |
+| `QPushButton* standButton` | End turn and let dealer play |
+| `QPushButton* restartButton` | Reset game |
+| `QGraphicsTextItem* playerScoreText` | Player's total score |
+| `QGraphicsTextItem* dealerScoreText` | Dealer's total score |
+| `QGraphicsTextItem* resultText`      | "You Win", "You Lose", etc |
+
+Key Functions:
+| Function | Summary |
+|----------|---------|
+| `GameBoard()` | Sets up the entire game board UI and connects signals |
+| `dealInitialCards()` | Deals 2 cards each to player and dealer |
+| `playerHit()` | Player draws a card |
+| `playerStand()` | Dealer auto-draws until >= 17 |
+| `updateScores()` | Updates score displays on screen |
+| `checkGameOver()` | Checks if someone won, lost, or busted |
+| `calculateScore(vector<Card*>)` | Calculates hand value and adjusts for Aces |
+| `restartGame()` | Resets the deck and UI |
+
+---
+
+## 🧼 Data Structures: Used vs Suggested
+
+### ✔️ Data Structures Used in the Code
+
+| Structure             | Purpose                                           | Why It Was Chosen         |
+|-----------------------|---------------------------------------------------|----------------------------|
+| `std::vector<Card*>`  | Store and manage dynamic card collections         | Resizable and random access |
+| `QString`             | Hold suit/rank names                              | Required for Qt UI rendering |
+| `QGraphicsScene`      | Graphics scene to place visual items              | Native to Qt framework      |
+| `QGraphicsTextItem`   | Render card text and score labels                 | For graphical text display |
+
+### 🌟 Suggested Improvements
+
+| Alternative Structure | Recommended Usage             | Benefit |
+|-----------------------|-------------------------------|---------|
+| `std::deque<Card*>`   | Replace vector for Deck       | O(1) pop from front; more semantic deck draw behavior |
+| `std::stack<Card*>`   | Draw cards from top of deck   | Enforces draw-only-top pattern, clearer intent |
+| `std::array`           | For static full-deck setup    | Safer and faster fixed-size alternative to vector for 52 cards |
+| `std::map<QString, int>` | Replace multiple ifs for card values | Cleaner value lookup for A, K, Q, J, etc. |
+
+### 🔀 Optional Refactor Flowchart
+
+```mermaid
+graph TD
+    A[Deck with std::vector] -->|Draws| B[Player Hand Vector]
+    A -->|Draws| C[Dealer Hand Vector]
+    B --> D[Calculate Score]
+    C --> D
+    B --> E[QGraphicsScene Rendering]
+    C --> E
+```
+
+Could be refactored as:
+
+```mermaid
+graph TD
+    A[Deck: std::stack] -->|Draw()| B[Player: std::deque]
+    A -->|Draw()| C[Dealer: std::deque]
+    B --> D[Calculate Score via map]
+    C --> D
+    B --> E[Render Hand]
+    C --> E
+```
+
+---
+
+## 🧠 Game Logic Summary
+
+1. Game starts → GameBoard is created
+2. 2 cards are dealt to each player
+3. Player chooses to Hit (draw) or Stand
+4. Dealer plays automatically (draws until ≥17)
+5. Scores are calculated
+6. Win/loss/tie is displayed
+7. Restart available via button
+
+---
+
+## 🖼️ Visual Overview (Diagram)
+
+The image below shows how the components interact:
+
+![Flowchart](insert-flowchart-image-url-here)
+
+- GameBoard uses Deck to draw Cards
+- Card handles visual representation
+- Buttons trigger signals → Game logic responds in slots
+- All updates are drawn on QGraphicsScene
+
+---
+
+## ⚖️ Limitations & Proposed Solutions
+
+| Limitation | Problem | Suggested Fix |
+|------------|---------|---------------|
+| Deck can be overdrawn | Drawing from an empty deck causes crashes | Add a check before drawing a card |
+| Code duplication when drawing cards | Same logic repeated for player and dealer | Use reusable helper function |
+
+### ✅ Fix 1: Prevent drawing from empty deck
+**Before:**
+```cpp
+Card* card = deck->drawCard();
+playerHand.push_back(card);
+```
+
+**After:**
+```cpp
+if (deck->cardsLeft() > 0) {
+    Card* card = deck->drawCard();
+    playerHand.push_back(card);
+}
+```
+
+### ✅ Fix 2: Reusable drawCardToHand function
+**Before:**
+```cpp
+Card* card = deck->drawCard();
+dealerHand.push_back(card);
+scene->addItem(card);
+```
+
+**After:**
+```cpp
+void GameBoard::drawCardToHand(std::vector<Card*>& hand) {
+    if (deck->cardsLeft() > 0) {
+        Card* card = deck->drawCard();
+        hand.push_back(card);
+        scene->addItem(card);
+    }
+}
+```
+Usage:
+```cpp
+drawCardToHand(playerHand);
+drawCardToHand(dealerHand);
+```
+
+---
+
+## 🛠️ Requirements
+
+- Qt 5 (or later)
+- C++11 or above
+- CMake or qmake for building
+
+---
+
+## 💪 Build & Run Instructions
+
+Using qmake:
+```bash
+qmake
+make
+./blackjack
+```
+
+Using CMake:
+```bash
+mkdir build
+cd build
+cmake ..
+make
+./blackjack
+```
+
+---
+
+Let me know if you'd like a LICENSE, CONTRIBUTING.md, or setup for GitHub Pages!
