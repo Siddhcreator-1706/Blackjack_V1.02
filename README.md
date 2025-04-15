@@ -267,7 +267,7 @@ drawCardToHand(dealerHand);
 ```
 
 ---
-# 🃏 Blackjack Enhancement: Realistic Dealer Card Reveal
+# 🃏 Blackjack Realistic Dealer Card Reveal Enhancement 
 
 ## 🔍 What Changed?  
 **Before:**  
