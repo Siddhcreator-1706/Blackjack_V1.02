@@ -2,6 +2,41 @@
 
 This is a Qt-based Blackjack game built in C++. It uses object-oriented principles and graphical components from Qt (e.g., QGraphicsView, QGraphicsScene, QPushButton) to create an interactive card game GUI.
 
+# 🎯 Quick Game Rules (Read First!)
+
+**Objective:** Beat the dealer by getting your card total as close to 21 as possible — without going over.
+
+### 🕹️ How to Play
+1. **Start Game** → You and dealer get 2 cards.
+2. **Your Turn:**
+   - 🔘 **Hit** to draw another card.
+   - 🔘 **Stand** to end your turn.
+3. **Dealer’s Turn:**
+   - Dealer draws until score ≥ 17.
+4. **Result:** Closest to 21 wins.
+   - Over 21 = **Bust** ❌
+   - Equal scores = **Tie** 🤝
+
+### 🧠 Example
+| Hand         | Cards            | Score |
+|--------------|------------------|-------|
+| Player       | A♠, 9♦           | 20    |
+| Dealer       | K♣, 7♣, 5♠       | 22    (Bust) |
+| ➤ **Player Wins** |
+
+### 🔁 Game Flowchart
+```mermaid
+flowchart TD
+    A[Start Game] --> B[Deal 2 cards to player & dealer]
+    B --> C{Player Chooses}
+    C -->|Hit| D[Player draws card]
+    C -->|Stand| E[Dealer plays until ≥17]
+    D --> C
+    E --> F[Compare scores]
+    F --> G[Show Result: Win/Lose/Tie]
+    G --> H[Restart Option]
+```
+
 ---
 
 ## 📂 Project Structure & File Roles
