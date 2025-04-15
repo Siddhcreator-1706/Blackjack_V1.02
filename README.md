@@ -384,7 +384,7 @@ void GameBoard::updateScoreDisplay() {
     );
     scoreDisplay->setPos(300, 20);
 }
-
+```
 
 
 Using CMake:
