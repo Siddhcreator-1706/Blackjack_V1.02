@@ -169,17 +169,6 @@ graph TD
     C --> E
 ```
 
-Could be refactored as:
-
-```mermaid
-graph TD
-    A[Deck: std::stack] -->|Draw()| B[Player: std::deque]
-    A -->|Draw()| C[Dealer: std::deque]
-    B --> D[Calculate Score via map]
-    C --> D
-    B --> E[Render Hand]
-    C --> E
-```
 
 ---
 
