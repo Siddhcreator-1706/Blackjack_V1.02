@@ -73,7 +73,7 @@ flowchart TD
 
 ---
 
-## ᵐ Qt Signals and Slots: Event Flow
+## Qt Signals and Slots: Event Flow
 
 Qt uses signals and slots to handle user interaction. When a user clicks a button, a signal is emitted. A slot is a method that's executed in response.
 
