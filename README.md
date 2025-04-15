@@ -344,13 +344,13 @@ High Score Table
 **In-Game View:**
 ```text
 ┌──────────────────────────────┐
-│       BLACKJACK SCORES        │
+│       BLACKJACK SCORES       │
 ├──────────────┬───────────────┤
 │   WINS: 5    │   LOSSES: 3   │
 └──────────────┴───────────────┘
 ┌──────────────────────────────┐
 │                              │
-│   You got Blackjack! 🎉      │
+│   You got Blackjack!         |
 │   Dealer shows: ♠K ♦9        │
 │                              │
 └──────────────────────────────┘
