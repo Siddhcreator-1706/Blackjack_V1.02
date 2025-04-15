@@ -267,7 +267,41 @@ drawCardToHand(dealerHand);
 ```
 
 ---
+# 🃏 Blackjack Enhancement: Realistic Dealer Card Reveal
 
+## 🎯 Feature Overview
+| Aspect          | Before Implementation | After Implementation |
+|-----------------|-----------------------|----------------------|
+| **Realism**     | All cards visible immediately | Hidden card mimics real casino play |
+| **Suspense**    | No anticipation build-up | True-to-life reveal moment |
+| **Code Structure** | Simple immediate reveal | Special handling for hidden card |
+
+## 🛠 Implementation Code
+```cpp
+/* GameBoard Class Additions */
+class GameBoard {
+    // ... existing code ...
+    Card* dealerHiddenCard = nullptr;  // Track the face-down card
+
+    void dealInitialCards() {
+        // Deal first card (visible)
+        dealerHand.push_back(deck->drawCard());
+        
+        // Deal second card (hidden)
+        dealerHiddenCard = deck->drawCard();
+        dealerHand.push_back(dealerHiddenCard);  // Add to hand but don't display
+        
+        // ... player card dealing logic ...
+    }
+
+    void dealerPlay() {
+        // Dramatic reveal before dealer starts playing
+        scene->addItem(dealerHiddenCard->getText());
+        dealerHiddenCard->getText()->setPos(150, 100);
+        
+        // ... rest of dealer turn logic ...
+    }
+};
 
 ```
 
