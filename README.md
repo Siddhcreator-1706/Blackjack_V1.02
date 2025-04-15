@@ -14,15 +14,38 @@ This is a Qt-based Blackjack game built in C++. It uses object-oriented principl
 3. **Dealer’s Turn:**
    - Dealer draws until score ≥ 17.
 4. **Result:** Closest to 21 wins.
-   - Over 21 = **Bust** ❌
+   - Over 21 = **Bust** ❌ 
    - Equal scores = **Tie** 🤝
 
-### 🧠 Example
+### 💰 Double Down - When and Why?
+- **Best Used:** When your first two cards total 9, 10, or 11
+- **Why?** Great chance to get 21 while doubling your potential win!
+- **Risk:** You commit to taking only one more card
+
+### 🧠 Examples
+**Example 1: Regular Play**
 | Hand         | Cards            | Score |
 |--------------|------------------|-------|
 | Player       | A♠, 9♦           | 20    |
 | Dealer       | K♣, 7♣, 5♠       | 22    (Bust) |
 | ➤ **Player Wins** |
+
+**Example 2: Double Down Success**
+| Action       | Cards            | Score | Bet  |
+|--------------|------------------|-------|------|
+| Initial      | 5♣, 6♥           | 11    | $10  |
+| Double Down  | + 8♦             | 19    | $20  |
+| Dealer       | J♠, 7♠           | 17    |      |
+| ➤ **Player Wins $40!** |
+
+**Example 3: Double Down Risk**
+| Action       | Cards            | Score | Bet  |
+|--------------|------------------|-------|------|
+| Initial      | Q♦, 2♠           | 12    | $10  |
+| Double Down  | + 9♣             | 21    | $20  |
+| Dealer       | A♠, K♦           | 21    |      |
+| ➤ **Tie - Bet Returned** |
+
 
 ### 🔁 Game Flowchart
 ```mermaid
@@ -245,21 +268,7 @@ drawCardToHand(dealerHand);
 
 ---
 
-## 🛠️ Requirements
 
-- Qt 5 (or later)
-- C++11 or above
-- CMake or qmake for building
-
----
-
-## 💪 Build & Run Instructions
-
-Using qmake:
-```bash
-qmake
-make
-./blackjack
 ```
 
 Using CMake:
@@ -273,4 +282,4 @@ make
 
 ---
 
-Let me know if you'd like a LICENSE, CONTRIBUTING.md, or setup for GitHub Pages!
+
