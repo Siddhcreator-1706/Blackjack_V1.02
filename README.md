@@ -385,6 +385,7 @@ void GameBoard::updateScoreDisplay() {
     scoreDisplay->setPos(300, 20);
 }
 ```
+## 🎥 Gameplay Demo
 🎥 [Watch on YouTube](https://youtu.be/28bWt65PhqY?si=P5DqPYoQTmqNvJPK)
 
 
