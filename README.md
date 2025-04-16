@@ -270,7 +270,7 @@ Qt was selected as the GUI framework for this Blackjack project for the followin
 - **Why not QML?**
   > While QML offers advanced animations and declarative syntax, we chose Qt Widgets (C++) for tighter integration with game logic and class-based architecture.
 
-- **Why not SFML/SFML or OpenGL?**
+- **Why not SFML or OpenGL?**
   > These libraries are lower-level and best for graphics-heavy or animated 2D/3D games. Qt suits button-driven games with less need for rendering pipelines.
 
 - **Manual vs Designer UI?**
