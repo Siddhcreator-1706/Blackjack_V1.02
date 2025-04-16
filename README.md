@@ -1,8 +1,9 @@
 # 🃏 BLACKJACK
 
 This is a Qt-based Blackjack game built in C++. It uses object-oriented principles and graphical components from Qt (e.g., QGraphicsView, QGraphicsScene, QPushButton) to create an interactive card game GUI.
-The term "Blackjack" specifically refers to a natural 21:
+![Game_Screenshot](cloner.jpg)
 
+The term "Blackjack" specifically refers to a natural 21:
 A two-card hand consisting of an Ace (valued at 11) and any 10-point card (10, Jack, Queen, or King).
 
 
@@ -55,6 +56,7 @@ A two-card hand consisting of an Ace (valued at 11) and any 10-point card (10, J
 | Dealer       | A♠, K♦           | 21    |      |
 | ➤ **Tie - Bet Returned** |
 
+<img src="Doubling_Down.jpg" alt="Game Screenshot" width="400" />
 
 ### 🔁 Game Flowchart
 ```mermaid
@@ -102,6 +104,8 @@ connect(restartButton, SIGNAL(clicked()), this, SLOT(restartGame()));
 ---
 
 ## 🧹 Class Breakdown
+
+<img src="Class_image.jpg" alt="Game Screenshot" width="400" height="300"/>
 
 ### 🃏 Card
 
@@ -189,19 +193,10 @@ Key Functions:
 | `std::array`           | For static full-deck setup    | Safer and faster fixed-size alternative to vector for 52 cards |
 | `std::map<QString, int>` | Replace multiple ifs for card values | Cleaner value lookup for A, K, Q, J, etc. |
 
-## 🧠 Data Structures: Before vs After (Made Super Simple)
-
-| 🔴 **Before (Used in Code)**       | 🟢 **After (Suggested for Improvement)** | 💡 **Why It's Better (In Simple Words)**                                                   |
-|------------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
-| `std::vector<Card*>` (for deck)    | `std::deque<Card*>`                      | You can **take cards from the front faster**, like drawing from the top of a real deck.     |
-| `std::vector<Card*>` (draw cards)  | `std::stack<Card*>`                      | Makes it **clear** that you’re **only drawing from the top** — like a real card pile.       |
-| `std::vector` (52-card setup)      | `std::array<Card, 52>`                   | A deck always has **52 cards** — using a fixed-size array is **safer** and a bit **faster**. |
-| Many `if` statements for values    | `std::map<QString, int>`                 | Just **look up the value** like a dictionary: `"K"` → `10`. Much **cleaner** and **easier**. |
-
 ### 🔀 Optional Refactor Flowchart
 
 ```mermaid
-graph TD
+flowchart TD
     A[Deck with std::vector] -->|Draws| B[Player Hand Vector]
     A -->|Draws| C[Dealer Hand Vector]
     B --> D[Calculate Score]
@@ -235,6 +230,18 @@ graph TD
 
 ---
 
+## 🖼️ Visual Overview (Diagram)
+
+```mermaid
+flowchart TD
+    GameBoard["GameBoard"] --> Deck["Deck"]
+    Deck --> Card["Card"]
+    Card --> QGraphicsScene["QGraphicsScene"]
+    Buttons["Buttons"] --> Signals["Signals"]
+    Signals --> GameLogic["Game Logic"]
+    GameLogic -->|via Slots| GameBoard
+    GameLogic --> QGraphicsScene
+```
 
 ---
 
@@ -270,7 +277,7 @@ Qt was selected as the GUI framework for this Blackjack project for the followin
 - **Why not QML?**
   > While QML offers advanced animations and declarative syntax, we chose Qt Widgets (C++) for tighter integration with game logic and class-based architecture.
 
-- **Why not SFML or OpenGL?**
+- **Why not SFML/SFML or OpenGL?**
   > These libraries are lower-level and best for graphics-heavy or animated 2D/3D games. Qt suits button-driven games with less need for rendering pipelines.
 
 - **Manual vs Designer UI?**
@@ -459,7 +466,6 @@ void GameBoard::updateScoreDisplay() {
 ```
 ## 🎥 Gameplay Demo
 
-
 ## Game Menu Options
 - **START** - Begin new game
 - **SELECT SEAT** - Choose player position
@@ -469,7 +475,7 @@ void GameBoard::updateScoreDisplay() {
 [![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
 
 
-## Click on above image to watch the demo video..
+Click on above image to watch the demo video..
 
 
 ## 🚀 How to Run the Blackjack Game
