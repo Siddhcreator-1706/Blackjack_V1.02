@@ -1,4 +1,4 @@
-# 🃏 Blackjack_V1.02 — Qt C++ Game
+# 🃏 BLACKJACK
 
 This is a Qt-based Blackjack game built in C++. It uses object-oriented principles and graphical components from Qt (e.g., QGraphicsView, QGraphicsScene, QPushButton) to create an interactive card game GUI.
 
