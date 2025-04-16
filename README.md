@@ -142,6 +142,17 @@ Key Methods:
 - `Card* drawCard()` → Draws one card from the deck.
 - `int cardsLeft()` → Returns remaining cards.
 
+### 🔀 Optional Refactor Flowchart
+
+```mermaid
+flowchart TD
+    A[Deck with std::vector] -->|Draws| B[Player Hand Vector]
+    A -->|Draws| C[Dealer Hand Vector]
+    B --> D[Calculate Score]
+    C --> D
+    B --> E[QGraphicsScene Rendering]
+    C --> E
+```
 ### 🎮 GameBoard
 
 Main game view, logic, and UI.
@@ -201,19 +212,6 @@ Key Functions:
 | std::vector<Card*> (draw cards)  | std::stack<Card*>                      | Makes it *clear* that you’re *only drawing from the top* — like a real card pile.       |
 | std::vector (52-card setup)      | std::array<Card, 52>                   | A deck always has *52 cards* — using a fixed-size array is *safer* and a bit *faster*. |
 | Many if statements for values    | std::map<QString, int>                 | Just *look up the value* like a dictionary: "K" → 10. Much *cleaner* and *easier*. |
-
-### 🔀 Optional Refactor Flowchart
-
-```mermaid
-flowchart TD
-    A[Deck with std::vector] -->|Draws| B[Player Hand Vector]
-    A -->|Draws| C[Dealer Hand Vector]
-    B --> D[Calculate Score]
-    C --> D
-    B --> E[QGraphicsScene Rendering]
-    C --> E
-```
-
 
 ---
 
