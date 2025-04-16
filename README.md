@@ -189,6 +189,15 @@ Key Functions:
 | `std::array`           | For static full-deck setup    | Safer and faster fixed-size alternative to vector for 52 cards |
 | `std::map<QString, int>` | Replace multiple ifs for card values | Cleaner value lookup for A, K, Q, J, etc. |
 
+## 🧠 Data Structures: Before vs After (Made Super Simple)
+
+| 🔴 **Before (Used in Code)**       | 🟢 **After (Suggested for Improvement)** | 💡 **Why It's Better (In Simple Words)**                                                   |
+|------------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
+| `std::vector<Card*>` (for deck)    | `std::deque<Card*>`                      | You can **take cards from the front faster**, like drawing from the top of a real deck.     |
+| `std::vector<Card*>` (draw cards)  | `std::stack<Card*>`                      | Makes it **clear** that you’re **only drawing from the top** — like a real card pile.       |
+| `std::vector` (52-card setup)      | `std::array<Card, 52>`                   | A deck always has **52 cards** — using a fixed-size array is **safer** and a bit **faster**. |
+| Many `if` statements for values    | `std::map<QString, int>`                 | Just **look up the value** like a dictionary: `"K"` → `10`. Much **cleaner** and **easier**. |
+
 ### 🔀 Optional Refactor Flowchart
 
 ```mermaid
