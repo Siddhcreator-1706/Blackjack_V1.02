@@ -387,6 +387,8 @@ void GameBoard::updateScoreDisplay() {
 ```
 ## 🎥 Gameplay Demo
 🎥 [Watch on YouTube](https://youtu.be/28bWt65PhqY?si=P5DqPYoQTmqNvJPK)
+[![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
+
 
 
 Using CMake:
