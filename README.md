@@ -207,16 +207,6 @@ graph TD
 
 ---
 
-## 🖼️ Visual Overview (Diagram)
-
-The image below shows how the components interact:
-
-![Flowchart](insert-flowchart-image-url-here)
-
-- GameBoard uses Deck to draw Cards
-- Card handles visual representation
-- Buttons trigger signals → Game logic responds in slots
-- All updates are drawn on QGraphicsScene
 
 ---
 
@@ -387,8 +377,17 @@ void GameBoard::updateScoreDisplay() {
 ```
 ## 🎥 Gameplay Demo
 🎥 [Watch on YouTube](https://youtu.be/28bWt65PhqY?si=P5DqPYoQTmqNvJPK)
-[![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
 
+## Game Menu Options
+- **START** - Begin new game
+- **SELECT SEAT** - Choose player position
+- **EXIT** - Quit the game
+- **RESTART** - Reset current game
+
+[![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
+# 🃏 The HOTA Blackjack Game
+
+Click the image above to watch the gameplay video on YouTube.
 
 
 Using CMake:
