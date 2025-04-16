@@ -385,9 +385,10 @@ void GameBoard::updateScoreDisplay() {
 - **RESTART** - Reset current game
 
 [![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
-# 🃏 The HOTA Blackjack Game
+# 🃏 The JHOTA Blackjack Game
 
 Click the image above to watch the gameplay video on YouTube.
+
 
 
 Using CMake:
