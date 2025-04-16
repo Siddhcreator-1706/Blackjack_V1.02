@@ -458,7 +458,7 @@ void GameBoard::updateScoreDisplay() {
 }
 ```
 ## 🎥 Gameplay Demo
-🎥 [Watch on YouTube](https://youtu.be/28bWt65PhqY?si=P5DqPYoQTmqNvJPK)
+
 
 ## Game Menu Options
 - **START** - Begin new game
@@ -469,7 +469,7 @@ void GameBoard::updateScoreDisplay() {
 [![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
 
 
-Click on above image to watch the demo video..
+## Click on above image to watch the demo video..
 
 
 ## 🚀 How to Run the Blackjack Game
