@@ -451,6 +451,9 @@ void GameBoard::updateScoreDisplay() {
 [![Watch the video](https://img.youtube.com/vi/28bWt65PhqY/0.jpg)](https://youtu.be/28bWt65PhqY)
 
 
+Click on above image to watch the demo video..
+
+
 ## 🚀 How to Run
 
 1. Install Qt Creator and Qt 6+
