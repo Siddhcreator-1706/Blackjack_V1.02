@@ -31,6 +31,7 @@ A two-card hand consisting of an Ace (valued at 11) and any 10-point card (10, J
 - **Best Used:** When your first two cards total 9, 10, or 11
 - **Why?** Great chance to get 21 while doubling your potential win!
 - **Risk:** You commit to taking only one more card
+  
 
 ### 🧠 Examples
 **Example 1: Regular Play**
@@ -72,7 +73,18 @@ flowchart TD
 ```
 
 ---
+## 🖼️ Visual Overview (Diagram)
 
+```mermaid
+flowchart TD
+    GameBoard["GameBoard"] --> Deck["Deck"]
+    Deck --> Card["Card"]
+    Card --> QGraphicsScene["QGraphicsScene"]
+    Buttons["Buttons"] --> Signals["Signals"]
+    Signals --> GameLogic["Game Logic"]
+    GameLogic -->|via Slots| GameBoard
+    GameLogic --> QGraphicsScene
+```
 ## 📂 Project Structure & File Roles
 
 | File         | Role |
@@ -123,7 +135,7 @@ Constructor:
 Card(QString suit, QString rank, int value);
 ```
 
-Other method:
+Other method in card class:
 ```cpp
 int getValue() const;  // Returns value of card
 ```
@@ -237,18 +249,7 @@ Key Functions:
 
 ---
 
-## 🖼️ Visual Overview (Diagram)
 
-```mermaid
-flowchart TD
-    GameBoard["GameBoard"] --> Deck["Deck"]
-    Deck --> Card["Card"]
-    Card --> QGraphicsScene["QGraphicsScene"]
-    Buttons["Buttons"] --> Signals["Signals"]
-    Signals --> GameLogic["Game Logic"]
-    GameLogic -->|via Slots| GameBoard
-    GameLogic --> QGraphicsScene
-```
 
 ---
 
