@@ -206,7 +206,7 @@ Key Functions:
 
 ## 🧠 Data Structures: Before vs After (Made Super Simple)
 
-| 🔴 *Before (Used in Code)*       | 🟢 *After (Suggested for Improvement)* | 💡 *Why It's Better (In Simple Words)*                                                   |
+| 🔴 *Before (Used in Code)*       | 🟢 *After (Suggested for Improvement)* | 💡 *Why It's Better?*                                                   |
 |------------------------------------|------------------------------------------|---------------------------------------------------------------------------------------------|
 | std::vector<Card*> (for deck)    | std::deque<Card*>                      | You can *take cards from the front faster*, like drawing from the top of a real deck.     |
 | std::vector<Card*> (draw cards)  | std::stack<Card*>                      | Makes it *clear* that you’re *only drawing from the top* — like a real card pile.       |
