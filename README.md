@@ -1,7 +1,16 @@
 # 🃏 BLACKJACK
 
 This is a Qt-based Blackjack game built in C++. It uses object-oriented principles and graphical components from Qt (e.g., QGraphicsView, QGraphicsScene, QPushButton) to create an interactive card game GUI.
+The term "Blackjack" specifically refers to a natural 21:
 
+A two-card hand consisting of an Ace (valued at 11) and any 10-point card (10, Jack, Queen, or King).
+
+
+## ✨ Why Is It Special?
+
+- Combines luck, **probability, and **strategic decision-making
+- Offers one of the lowest house edges in a casino if played optimally
+- A game where player choices actually matter
 # 🎯 Quick Game Rules (Read First!)
 
 **Objective:** Beat the dealer by getting your card total as close to 21 as possible — without going over.
@@ -454,12 +463,34 @@ void GameBoard::updateScoreDisplay() {
 Click on above image to watch the demo video..
 
 
-## 🚀 How to Run
+## 🚀 How to Run the Blackjack Game
 
-1. Install Qt Creator and Qt 6+
-2. Clone the repo:
-   ```bash
-   git clone https://github.com/Siddhcreator-1706/Blackjack_V1.02.git
+Follow these simple steps to run the Blackjack game using Qt:
+
+### 1. Install Qt and Qt Creator
+- Download the Qt Online Installer from [qt.io/download](https://www.qt.io/download)
+- Sign in or create a free Qt account
+- During installation, select:
+  - **Qt 6.x.x** version (latest is fine)
+  - **Qt Creator**
+  - **MinGW** (for Windows) or appropriate compiler for your OS
+
+### 2. Download the Project
+- Clone the repository using Git:
+  ```bash
+  git clone https://github.com/anmolsbrar/Blackjack_V1.02.git
+### 3. Open the Project in Qt Creator
+- Open **Qt Creator**
+- Go to `File → Open File or Project`
+- Navigate to the extracted folder and open `Blackjack_V1.02.pro`
+
+### 4. Configure the Kit
+- Select the available **Qt 6.x** kit (with appropriate compiler)
+- Click **Configure Project** to load the files
+
+### 5. Build and Run the Game
+- Press the **Run** button (▶️) to build and launch the game
+- The Blackjack game window should open — enjoy playing!
 
 
 
